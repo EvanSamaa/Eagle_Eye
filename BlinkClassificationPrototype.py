@@ -8,7 +8,7 @@ Created on Sat Aug 25 23:17:07 2018
 #function definitions:
 #Defined the repeat function for the code to keep reading values after
 #recoginzing a gesture.
-from csvreader import *
+from csv_reader import *
 import csv
 import numpy as np
 import pickle
