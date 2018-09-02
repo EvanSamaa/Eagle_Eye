@@ -26,7 +26,9 @@ def get_action(port_stream):
 
     # iterate through "port_stream" parameter to classify body action
     for value in port_stream:
-        if (value > 900):
+        # convert value from type string to float
+        value = float(value)
+        if value > 900:
             return "Blink detected"
     return None
 
@@ -42,5 +44,5 @@ def get_calibration_mean(port_stream):
     try:
         return np.mean(port_stream)
     except:
-        print("ERROR - calibration_retrieve_mean(port_stream): port_stream is a list but unable"
+        print("ERROR - get_calibration_mean: port_stream is a list but unable"
               "to find mean")
