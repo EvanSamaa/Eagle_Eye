@@ -8,7 +8,7 @@ def get_data_from_csv(csv_file):
     try:
         with open(csv_file, newline='') as file:
             # muse_data looks like [[row],[row],[row]]
-            data_reader = csv.reader(file, delimter=',')
+            data_reader = csv.reader(file, delimiter=',')
             for row_num in data_reader:
                 muse_data += [row_num]
 
