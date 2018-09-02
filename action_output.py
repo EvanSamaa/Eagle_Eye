@@ -6,9 +6,11 @@
 """
 
 # import necessary libraries and files
-import numpy as np
 import csv_reader
 import classify_action
 
 csv_file = "Blinks1.csv"
-muse_data = get
+muse_data = csv_reader.get_data_from_csv(csv_file)
+port_stream = muse_data[3]
+output = classify_action.get_action(port_stream)
+print(output)

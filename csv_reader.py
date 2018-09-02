@@ -5,13 +5,16 @@ import csv
 
 def get_data_from_csv(csv_file):
     muse_data = []
-    with open(csv_file, newline='') as file:
-        # muse_data looks like [[row],[row],[row]]
-        data_reader = csv.reader(file, delimter=',')
-        for row_num in data_reader:
-            muse_data += [row_num]
+    try:
+        with open(csv_file, newline='') as file:
+            # muse_data looks like [[row],[row],[row]]
+            data_reader = csv.reader(file, delimter=',')
+            for row_num in data_reader:
+                muse_data += [row_num]
 
-    return muse_data
+        return muse_data
+    except:
+        print("ERROR - get_data_from_csv(csv_file): unable to read file")
 
 # time = np.array(muse_dataMatrix[0])
 # DataStream1 = np.array(muse_dataMatrix[1])
