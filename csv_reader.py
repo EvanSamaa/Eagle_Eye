@@ -3,7 +3,7 @@ import csv
 # import pickle
 # import matplotlib.pyplot as plt
 
-def get_csv(csv_file):
+def get_data_from_csv(csv_file):
     muse_data = []
     with open(csv_file, newline='') as file:
         # muse_data looks like [[row],[row],[row]]
