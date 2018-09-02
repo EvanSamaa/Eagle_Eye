@@ -3,11 +3,11 @@ import csv
 # import pickle
 # import matplotlib.pyplot as plt
 
-def get_csv(csv_name):
+def get_csv(csv_file):
     muse_data = []
-    with open(csv_name, newline='') as csv_file:
+    with open(csv_file, newline='') as file:
         # muse_data looks like [[row],[row],[row]]
-        data_reader = csv.reader(csv_file, delimter=',')
+        data_reader = csv.reader(file, delimter=',')
         for row_num in data_reader:
             muse_data += [row_num]
 
