@@ -10,17 +10,31 @@ import csv
 import numpy as np
 
 
-def get_processed_data(csv_file, sensor_cols, data_type_col, data_type):
+def get_processed_data(csv_file, sensor_cols, data_type_col, data_type, transposition=True):
     """
     main function that returns processed data from csv
     :param csv_file: STRING - file path directory
     :param sensor_cols: INT ARRAY - integer index of sensor columns in csv file
     :param data_type_col: INT - integer index of "data_type"
     :param data_type: STRING - name of the type of csv data to collect (eg. "Person0/eeg"
+    :param data_type: BOOLEAN - transpose the csv data output 2D numpy array (default=True)
     :return: NUMPY FLOAT ARRAY - processed data
     """
+    # perform error checking on parameters
+    try:
+        assert isinstance(csv_file, str)
+        assert isinstance(sensor_cols, list)
+        assert isinstance(data_type_col, int)
+        assert isinstance(data_type, str)
+        assert isinstance(transposition, bool)
+    except AssertionError:
+        print("ERROR - get_processed_data(csv_file, sensor_cols, data_type_col, data_type, transposition=True): Check "
+              "input parameter type!")
+        return None
+
+    # get raw and processed data from csv file
     raw_data = get_raw_data(csv_file)
-    return process_data(raw_data, sensor_cols, data_type_col, data_type)
+    return process_data(raw_data, sensor_cols, data_type_col, data_type, transposition)
 
 
 def get_raw_data(csv_file):
@@ -42,7 +56,7 @@ def get_raw_data(csv_file):
         print("ERROR - get_data_from_csv(csv_file): unable to read csv file")
 
 
-def process_data(raw_data, sensor_cols, data_type_col, data_type):
+def process_data(raw_data, sensor_cols, data_type_col, data_type, transposition):
     """
     function that cleans up "raw_data" by:
     1) extract string values at each "sensor_cols"
@@ -53,6 +67,7 @@ def process_data(raw_data, sensor_cols, data_type_col, data_type):
     :param sensor_cols: INT ARRAY - integer index of sensor columns in csv file
     :param data_type_col: INT - integer index of "data_type"
     :param data_type: STRING - name of the type of csv data to collect (eg. " Person0/eeg"
+    :param data_type: BOOLEAN - transpose the csv data output 2D numpy array
     :return: NUMPY FLOAT ARRAY - processed data
     """
     # initiate a numpy array
@@ -75,7 +90,8 @@ def process_data(raw_data, sensor_cols, data_type_col, data_type):
             processed_data = np.append(processed_data, [temp_list], axis=0)
 
     # transpose numpy array
-    processed_data = processed_data.transpose()
+    if transposition:
+        processed_data = processed_data.transpose()
 
     return processed_data
 
@@ -87,7 +103,14 @@ if __name__ == '__main__':
     sensor_cols = [2, 3, 4, 5]
     data_type_col = 1
     data_type = " Person0/eeg"
-    print(get_raw_data(csv_file))
+    transposition = False
+    raw_data = get_raw_data(csv_file)
+    processed_data = get_processed_data(csv_file, sensor_cols, data_type_col, data_type, transposition)
+    print(raw_data)
     print("______________________")
-    print(get_processed_data(csv_file, sensor_cols, data_type_col, data_type))
-    print(get_processed_data(csv_file, sensor_cols, data_type_col, data_type).shape)
+    print(processed_data)
+    print(processed_data.shape)
+    print(type(csv_file))
+    print(type(sensor_cols))
+    print(type(data_type_col))
+    print(type(data_type))
