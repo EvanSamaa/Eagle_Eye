@@ -24,3 +24,5 @@ def get_analytics(raw_data, sensor_cols, data_type_col, data_type, transposition
     :param data_type: BOOLEAN - transpose the csv data output 2D numpy array
     :return: NUMPY FLOAT ARRAY - processed data
     """
+
+
