@@ -1,3 +1,10 @@
+"""
+    File Name: csv_reader.py
+    Author: Barney Wei
+    Date Created: 09/02/2018
+    Python Version: 3.5
+"""
+
 # import required files and libraries
 import csv
 import numpy as np
