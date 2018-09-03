@@ -45,4 +45,4 @@ def get_calibration_mean(port_stream):
         return np.mean(port_stream)
     except:
         print("ERROR - get_calibration_mean: port_stream is a list but unable"
-              "to find mean")
+              " to find mean")

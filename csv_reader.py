@@ -26,5 +26,3 @@ def get_data_from_csv(csv_file):
 # plt.plot(freq, fft_DataStream1.real, freq, fft_DataStream1.imag)
 
 # plt.show()
-
-
