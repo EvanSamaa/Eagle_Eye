@@ -62,7 +62,7 @@ def process_data(raw_data, sensor_cols, data_type_col, data_type, transposition)
     1) extract string values at each "sensor_cols"
     2) convert string to float and replace blanks with 0
     3) input to a numpy array
-    4) transpose numpy arraw
+    4) transpose numpy array
     :param raw_data: STRING 2-D LIST - raw csv data
     :param sensor_cols: INT ARRAY - integer index of sensor columns in csv file
     :param data_type_col: INT - integer index of "data_type"
